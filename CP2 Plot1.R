@@ -10,14 +10,14 @@ SCC <- readRDS("C:\\Users\\BZM11\\Documents\\R\\EDA\\CP2\\Source_Classification_
 # for each of the years 1999, 2002, 2005, and 2008.
 
 ## Sum total emission per year
-totalyear <- aggregate(Emissions ~ year, NEI, sum) 
+totalyear <- aggregate(Emissions/100000 ~ year, NEI, sum) 
 
 
 ## Create plot
-par(mfrow=c(2,2))
+par(mfrow=c(1,2))
 with(totalyear, {
 
-plot(totalyear/100000, type = 'o', main = 'emission at various years/100000', xlab = 'year', ylab = 'PM2.5 Emission', col = 'red') 
+plot(totalyear, type = 'o', main = 'emission at various years', xlab = 'year', ylab = 'PM2.5 Emission', col = 'red') 
 
 barplot(height=totalyear$Emissions/100000, 
         names.arg=totalyear$year, xlab="years", col = c('red'), 
@@ -29,3 +29,4 @@ barplot(height=totalyear$Emissions/100000,
 ## Saving to file
 dev.copy(png, file="plot1.png", width=480, height=480) 
 dev.off()
+
