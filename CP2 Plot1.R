@@ -14,16 +14,11 @@ totalyear <- aggregate(Emissions/100000 ~ year, NEI, sum)
 
 
 ## Create plot
-par(mfrow=c(1,2))
-with(totalyear, {
+
 
 plot(totalyear, type = 'o', main = 'emission at various years', xlab = 'year', ylab = 'PM2.5 Emission', col = 'red') 
 
-barplot(height=totalyear$Emissions/100000, 
-        names.arg=totalyear$year, xlab="years", col = c('red'), 
-        ylab=expression('total'),
-        main=expression('emissions at various years/100.000')) 
-})
+
 
 
 ## Saving to file
